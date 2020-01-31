@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Barlow', sans-serif;
+}
+
+button:active, button:focus {
+  outline: none;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+
+.calculator {
+  width: 497px;
+  height: 1081px;
+  margin: 0 auto;
+  background: #F6F5F0;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25), inset -5px -5px 30px rgba(0, 0, 0, 0.07);
+  border-radius: 50px;
+  padding: 171px 21px 0;
+}
+
+.output {
+  height: 308px;
+  background: #F5F3EE;
+  box-shadow: inset -10px -10px 5px #FFFFFF, inset 5px 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 31px 27px;
+}
+
+#output-main {
+  font-size: 60px
+}
+
+#output-history-1, #output-history-2 {
+  font-size: 30px;
+}
+
+.input {
+  margin-top: 60px;
+}
+.input .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 27px;
+}
+
+.input-btn {
+  width: 68px;
+  height: 68px;
+  background: #F6F5F0;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), inset -2.5px -2.5px 5px rgba(0, 0, 0, 0.08);
+  font-size: 30px;
+  font-weight: normal;
+  line-height: 68px;
+  transition: all 0.1s ease;
+}
+
+.input-btn:active {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1), inset -2.5px -2.5px 5px rgba(0, 0, 0, 0.08);
+}
+
+.input-btn.yellow {
+  color: #E5C61A;
+}
+
+.input-btn.grey {
+  color: #484848;
+}
+
+.btn-result {
+  background-color: #F4D219;
+}
