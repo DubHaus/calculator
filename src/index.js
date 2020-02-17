@@ -8,7 +8,6 @@ const state = {
     symbol: '',
     result: 0
   },
-  _memory: 0,
   get current() {
     return this._current;
   },
@@ -16,15 +15,6 @@ const state = {
     render(value);
     this._current = {
       ...this._current,
-      ...value
-    }
-  },
-  get memory() {
-    return this._memory
-  },
-  set memory(value) {
-    this._memory = {
-      ...this._memory,
       ...value
     }
   }
@@ -39,7 +29,6 @@ const onClickBtn = (e) => {
       result: reduceNumber(countResult())
     }
   }
-  else if (isMemoryBtn(char)) state.memory = workWithMemory(char);
   else if (isUnary(char)) state.current = countCurrentVariables(char);
   else if (char == 'C') cleanInput();
   else state.current = setSymbolToState(char);
@@ -79,11 +68,6 @@ const cleanInput = () => {
 
 const isNumber = char => (!isNaN(Number.parseInt(char)) || char === '.');
 
-const isMemoryBtn = char => {
-  return char == 'M+' || char == 'M-'
-    || char == 'MR' || char == 'MC';
-}
-
 const isUnary = char => {
   return char == '%' || char == 'sqrt'
     || char == '+-';
@@ -91,8 +75,10 @@ const isUnary = char => {
 
 const setNumberToState = num => {
   const { current } = state;
-  if (current.result) cleanInput();
-
+  if (current.result) {
+    cleanInput();
+    return concatNumbers('var1', num)
+  }
   return current.symbol ?
     concatNumbers('var2', num) :
     concatNumbers('var1', num)
@@ -112,7 +98,7 @@ const concatNumbers = (current, newNum) => {
 const countResult = () => {
   const { var1, var2, symbol } = state.current;
 
-  if (!var2) return null;
+  if (!var2) return '';
   switch (symbol) {
     case '+':
       return var1 + var2;
@@ -145,7 +131,7 @@ const countCurrentVar = (symbol, variable) => {
     case '+-':
       return { [variable]: -currentVar };
     default:
-      return 0;
+      return '';
   }
 }
 
