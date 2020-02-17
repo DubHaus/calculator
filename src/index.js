@@ -32,8 +32,6 @@ const onClickBtn = (e) => {
   else if (isUnary(char)) state.current = countCurrentVariables(char);
   else if (char == 'C') cleanInput();
   else state.current = setSymbolToState(char);
-
-  console.log(state.current)
 }
 
 const reduceNumber = num => {
